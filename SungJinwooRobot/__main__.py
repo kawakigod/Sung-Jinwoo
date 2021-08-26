@@ -87,7 +87,8 @@ HELP_STRINGS = """
 ✏️ /start: You have already used it.
 *All commands can either be used with / or !.*  
 """
-    DONATE_STRING = """donate to the original writer of the Base code, Paul
+
+DONATE_STRING = """donate to the original writer of the Base code, Paul
 There are two ways of supporting him; [PayPal](paypal.me/PaulSonOfLars), or [Monzo](monzo.me/paulnionvestergaardlarsen)."""
 
 IMPORTED = {}
