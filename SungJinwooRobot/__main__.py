@@ -88,10 +88,6 @@ HELP_STRINGS = """
 *All commands can either be used with / or !.*  
 """
 
-else:
-        update.effective_message.reply_video(
-                KURUMI_IMG, caption=f"Heyl!!!!\nPut one finger on my street hawk and I’ll kill you")
-
     DONATE_STRING = """donate to the original writer of the Base code, Paul
 There are two ways of supporting him; [PayPal](paypal.me/PaulSonOfLars), or [Monzo](monzo.me/paulnionvestergaardlarsen)."""
 
