@@ -268,26 +268,26 @@ def info(update: Update, context: CallbackContext):
     disaster_level_present = False
 
     if user.id == OWNER_ID:
-        text += "\n\nThe Power level of this person is 'God'."
+        text += "\n\nThis Person is my <b>Leader</b>."
         disaster_level_present = True
     elif user.id in DEV_USERS:
-        text += "\n\nThe Power level of this person is 'S - Rank'."
+        text += "\n\nThis Person is my <b>Vice Leader</b>."
         disaster_level_present = True
     elif user.id in DRAGONS:
-        text += "\n\nThe Power level of this person is 'A - Rank'."
+        text += "\n\nThis User is one of <b>Elite Commander</b>."
         disaster_level_present = True
     elif user.id in DEMONS:
-        text += "\n\nThe Power level of this person is 'B - Rank'."
+        text += "\n\nThis User is one of <b>Former Member</b>."
         disaster_level_present = True
     elif user.id in TIGERS:
-        text += "\n\nThe Power level of this person is 'C - Rank'."
+        text += "\n\nThis user is a part of <b>1st Division</b>."
         disaster_level_present = True
     elif user.id in WOLVES:
-        text += "\n\nThe Power level of this person is 'D - Rank'."
+        text += "\n\nThis user is a part of <b>2nd Division</b>."
         disaster_level_present = True
 
     if disaster_level_present:
-        text += ' [<a href="https://t.me/SungJinwooUpdates/5">?</a>]'.format(
+        text += ' [<a href="https://t.me/SungJinwooUpdates/5">«*»</a>]'.format(
             bot.username)
 
     try:
