@@ -512,7 +512,16 @@ def migrate_chats(update: Update, context: CallbackContext):
 
 
 def main():
-  #  test_handler = DisableAbleCommandHandler("test", test, run_async=True)
+    if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
+        try:
+            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "[I am now online.](https://telegra.ph//file/dafe683bf4989bef0008f.jpg)", parse_mode=ParseMode.MARKDOWN)
+        except Unauthorized:
+            LOGGER.warning(
+                "Bot isnt able to send message to support_chat, go and check!"
+            )
+        except BadRequest as e:
+            LOGGER.warning(e.message)
+   test_handler = DisableAbleCommandHandler("test", test, run_async=True)
     start_handler = DisableAbleCommandHandler("start", start, pass_args=True, run_async=True)
 
     help_handler = DisableAbleCommandHandler("help", get_help, run_async=True)
