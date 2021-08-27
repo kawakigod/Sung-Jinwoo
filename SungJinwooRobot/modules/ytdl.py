@@ -7,10 +7,10 @@ from pykeyboard import InlineKeyboard
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton
 
-from Cutiepii_Robot import pgram, arq
-from Cutiepii_Robot.utils.errors import capture_err
-from Cutiepii_Robot.utils.formatter import convert_seconds_to_minutes as timeFormat
-from Cutiepii_Robot.utils.functions import downloader
+from SungJinwooRobot import pgram, arq
+from SungJinwooRobot.utils.errors import capture_err
+from SungJinwooRobot.utils.formatter import convert_seconds_to_minutes as timeFormat
+from SungJinwooRobot.utils.functions import downloader
 
 
 
