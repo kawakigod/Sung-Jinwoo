@@ -72,7 +72,7 @@ buttons = [
         text="🚔 Support", url=f"https://t.me/{SUPPORT_CHAT}"
         ),
         InlineKeyboardButton(
-        text="📚 Hawks Network", url=f"https://t.me/HawksNet"
+        text="🌐 Hawks Network", url=f"https://t.me/HawksNet"
         ),
     ],
     [
