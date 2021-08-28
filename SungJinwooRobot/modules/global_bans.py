@@ -90,33 +90,33 @@ def gban(update: Update, context: CallbackContext):
         return
     
     if user_id == OWNER_ID:
-        message.reply_text("This Hunter is my Owner, I really don't want to get deleted.")
+        message.reply_text("He is my leader, I really don't want to get punched.")
         return
 
     if int(user_id) in DEV_USERS:
         message.reply_text(
-            "That user is CO-OWNER of the Hunter Association you think I will able to ban them?"
+            "He is vice-leader of Tokyo Manji you think I will able to ban them?"
         )
         return
 
     if int(user_id) in DRAGONS:
         message.reply_text(
-            "This user is a A-Rank Hunter, fighting them will only cause destruction."
+            "This user is a Elite Commander, fighting them will only cause destruction."
         )
         return
 
     if int(user_id) in DEMONS:
         message.reply_text(
-            "Are u asking me to ban a B-RANK Hunter? I can't stand a chance"
+            "Are u asking me to ban a Former member? I can't stand a chance"
         )
         return
 
     if int(user_id) in TIGERS:
-        message.reply_text("Fighting against a C-Rank Hunter? I can't win...")
+        message.reply_text("Fighting against a 1st-member ? I can't win...")
         return
 
     if int(user_id) in WOLVES:
-        message.reply_text("That's a D-Rank Hunter! They are immune to all type of bans.")
+        message.reply_text("That's a 2nd-member! They are immune to all type of bans.")
         return
 
     if user_id == bot.id:
