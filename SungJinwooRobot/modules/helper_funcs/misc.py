@@ -1,12 +1,13 @@
-from typing import Dict, List
+from math import ceil
+from typing import List, Dict
 
-from SungJinwooRobot import NO_LOAD
-from telegram import MAX_MESSAGE_LENGTH, Bot, InlineKeyboardButton, ParseMode
+from telegram import MAX_MESSAGE_LENGTH, InlineKeyboardButton, Bot, ParseMode,Update
 from telegram.error import TelegramError
+
+from SungJinwooRobot import LOAD, NO_LOAD
 
 
 class EqInlineKeyboardButton(InlineKeyboardButton):
-
     def __eq__(self, other):
         return self.text == other.text
 
@@ -40,48 +41,52 @@ def split_message(msg: str) -> List[str]:
 
 def paginate_modules(page_n: int, module_dict: Dict, prefix, chat=None) -> List:
     if not chat:
-        modules = sorted([
-            EqInlineKeyboardButton(
-                x.__mod_name__,
-                callback_data="{}_module({})".format(prefix,
-                                                     x.__mod_name__.lower()))
-            for x in module_dict.values()
-        ])
+        modules = sorted(
+            [EqInlineKeyboardButton(x.__mod_name__,
+                                    callback_data="{}_module({})".format(prefix, x.__mod_name__.lower())) for x
+             in module_dict.values()])
     else:
-        modules = sorted([
-            EqInlineKeyboardButton(
-                x.__mod_name__,
-                callback_data="{}_module({},{})".format(prefix, chat,
-                                                        x.__mod_name__.lower()))
-            for x in module_dict.values()
-        ])
+        modules = sorted(
+            [EqInlineKeyboardButton(x.__mod_name__,
+                                    callback_data="{}_module({},{})".format(prefix, chat, x.__mod_name__.lower())) for x
+             in module_dict.values()])
 
     pairs = [
-        modules[i * 3:(i + 1) * 3] for i in range((len(modules) + 3 - 1) // 3)
+    modules[i * 3:(i + 1) * 3] for i in range((len(modules) + 3 - 1) // 3)
     ]
 
     round_num = len(modules) / 3
     calc = len(modules) - round(round_num)
     if calc == 1:
-        pairs.append((modules[-1],))
+        pairs.append((modules[-1], ))
     elif calc == 2:
-        pairs.append((modules[-1],))
+        pairs.append((modules[-1], ))
+
+    max_num_pages = ceil(len(pairs) / 10)
+    modulo_page = page_n % max_num_pages
+
+    # can only have a certain amount of buttons side by side
+    if len(pairs) > 7:
+        pairs = pairs[modulo_page * 7:7 * (modulo_page + 1)] + [
+            (EqInlineKeyboardButton("<-", callback_data="{}_prev({})".format(prefix, modulo_page)),
+                EqInlineKeyboardButton("•", callback_data="shasa_back"),
+             EqInlineKeyboardButton("->", callback_data="{}_next({})".format(prefix, modulo_page)))]
+
+    else:
+        pairs += [[EqInlineKeyboardButton("Home", callback_data="bot_start")]]
+
+
 
     return pairs
 
 
-def send_to_list(bot: Bot,
-                 send_to: list,
-                 message: str,
-                 markdown=False,
-                 html=False) -> None:
+def send_to_list(bot: Bot, send_to: list, message: str, markdown=False, html=False) -> None:
     if html and markdown:
         raise Exception("Can only send with either markdown or HTML!")
     for user_id in set(send_to):
         try:
             if markdown:
-                bot.send_message(
-                    user_id, message, parse_mode=ParseMode.MARKDOWN)
+                bot.send_message(user_id, message, parse_mode=ParseMode.MARKDOWN)
             elif html:
                 bot.send_message(user_id, message, parse_mode=ParseMode.HTML)
             else:
@@ -111,6 +116,11 @@ def revert_buttons(buttons):
 
     return res
 
+def sendMessage(text: str, bot: Bot, update: Update):
+    return bot.send_message(update.message.chat_id,
+                                    reply_to_message_id=update.message.message_id,
+                                    text=text, parse_mode=ParseMode.HTML)
+
 
 def build_keyboard_parser(bot, chat_id, buttons):
     keyb = []
@@ -124,6 +134,5 @@ def build_keyboard_parser(bot, chat_id, buttons):
 
     return keyb
 
-
 def is_module_loaded(name):
-    return name not in NO_LOAD
+     return name not in NO_LOAD
