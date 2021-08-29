@@ -228,14 +228,14 @@ def new_member(update: Update, context: CallbackContext):
             # Give the owner a special welcome
             if new_mem.id == OWNER_ID:
                update.effective_chat.send_message(
-                    "Oh, My Owner just joined!",
+                    "Oh, My leader just joined!",
                     reply_to_message_id=reply)
      
 
             # Welcome Devs
             elif new_mem.id in DEV_USERS:
                  update.effective_chat.send_message(
-                    "Whoa! A S Rank Hunter just joined!",
+                    "Whoa! A Vice-leader just joined!",
                     reply_to_message_id=reply,
                 )
                 
@@ -243,7 +243,7 @@ def new_member(update: Update, context: CallbackContext):
             # Welcome Sudos
             elif new_mem.id in DRAGONS:
                  update.effective_chat.send_message(
-                    "GOD! A Rank Hunter just joined! Stay Alert!",
+                    "GOD! A Elite Commander just joined! Stay Alert!",
                     reply_to_message_id=reply,
                 )
                 
@@ -251,7 +251,7 @@ def new_member(update: Update, context: CallbackContext):
             # Welcome Support
             elif new_mem.id in DEMONS:
                  update.effective_chat.send_message(
-                    "Huh a B-RANK?! Someone with a B-RANK HUNTER SKILL just joined!",
+                    "Huh a Former-member?! Someone with a Former  SKILL just joined!",
                     reply_to_message_id=reply,
                 )
               
@@ -259,14 +259,14 @@ def new_member(update: Update, context: CallbackContext):
             # Welcome Whitelisted
             elif new_mem.id in TIGERS:
                  update.effective_chat.send_message(
-                    "OH YEAH! A C-RANK Hunter just joined!",
+                    "OH YEAH! A 1st member just joined!",
                     reply_to_message_id=reply)
               
 
             # Welcome Tigers
             elif new_mem.id in WOLVES:
                  update.effective_chat.send_message(
-                    "JEZZ! A D-RANK Hunter just joined!",
+                    "JEZZ! A 2nd member just joined!",
                     reply_to_message_id=reply)
             
 
