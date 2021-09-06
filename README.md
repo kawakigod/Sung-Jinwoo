@@ -1,4 +1,4 @@
-![Manjiro Sano](https://telegra.ph/file/7b5840767dcde1e4ea4a8.jpg)
+![Manjiro Sano](https://telegra.ph/file/9071ae9a054338adb97e4.jpg)
 # Manjiro Sano
 [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)!]
 
